@@ -28,10 +28,15 @@
          main_menu
        when 2
          system "clear"
-         print "Enter An Entry Number"
-         entry_number = gets.chomp
-         view_entry_number
-         main_menu
+         print "Enter An Entry Number "
+         entry_number = gets.to_i
+         if entry_number > 0 && entry_number <= address_book.entries.length
+            view_entry_number(entry_number)
+         else
+             puts "You entered #{entry_number}. #{entry_number} is not a valid entry"
+             puts "Please enter a valid entry number"
+             main_menu
+         end
        when 3
          system "clear"
          create_entry
@@ -119,10 +124,11 @@
      end
    end
    
-   def view_entry_number
-       puts "you are viewing an entry number"
-       puts "Good-bye!"
-       exit(0)
+   def view_entry_number(number)
+       index = number - 1
+       puts "you are viewing an entry number #{number}"
+       puts address_book.entries[index];
+       main_menu
     end
    
  end
