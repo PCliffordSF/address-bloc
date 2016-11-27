@@ -11,7 +11,7 @@
      expect(entry.email).to eq expected_email
    end
  
-     
+     # describes the attributes part.
    describe "attributes" do
     
      it "responds to entries" do
@@ -45,9 +45,9 @@
      end
    end
    
-   # import part of the tests
+   # import part of the tests for entries.csv
    describe "#import_from_csv" do
-     it "imports the correct number of entries" do
+     it "imports the correct number of entries from entries.csv" do
        book.import_from_csv("entries.csv")
        book_size = book.entries.size
        expect(book_size).to eq 5
@@ -81,6 +81,34 @@
        book.import_from_csv("entries.csv")
        entry_five = book.entries[4]
        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+     end
+   end
+   
+   
+   # import part of the tests for entries_2.csv
+   describe "#import_from_second_csv" do
+     it "imports the correct number of entries from entries_2" do
+       book.import_from_csv("entries_2.csv")
+       book_size = book.entries.size
+       expect(book_size).to eq 3
+     end
+     
+     it "imports the 1st entry" do
+       book.import_from_csv("entries_2.csv")
+       entry_one = book.entries[0]
+       check_entry(entry_one, "Beavis", "555-555-4854", "beavis@blocmail.com")
+     end
+     
+     it "imports the 2nd entry" do
+       book.import_from_csv("entries_2.csv")
+       entry_two = book.entries[1]
+       check_entry(entry_two, "Butthead", "555-555-5415", "butthead@blocmail.com")
+     end
+ 
+     it "imports the 3rd entry" do
+       book.import_from_csv("entries_2.csv")
+       entry_three = book.entries[2]
+       check_entry(entry_three, "Mr. Butthead", "555-555-3660", "mr_butthead@blocmail.com")
      end
    end
  end

@@ -24,7 +24,7 @@ class AddressBook
    end
    
    def import_from_csv(file_name)
-    csv_text = File.read(file_name)
+    csv_text = File.read(file_name)  # this is where the problems seems to be. 
     csv = CSV.parse(csv_text, headers: true, skip_blanks: true)
    # #8
     csv.each do |row|
