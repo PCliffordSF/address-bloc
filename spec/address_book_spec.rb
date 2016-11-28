@@ -48,7 +48,7 @@
    # import part of the tests
    describe "#import_from_csv" do
      it "imports the correct number of entries" do
-       book.import_from_csv("../models/entries.csv")
+       book.import_from_csv("entries.csv")
        book_size = book.entries.size
        expect(book_size).to eq 5
      end
