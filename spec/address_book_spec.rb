@@ -50,7 +50,7 @@
      it "imports the correct number of entries" do
        book.import_from_csv("entries.csv")
        book_size = book.entries.size
-       expect(book_size).to eq 5
+       expect(book_size).to eq(5)
      end
      
      it "imports the 1st entry" do
@@ -91,7 +91,6 @@
        entry = book.binary_search("Dan")
        expect(entry).to be_nil
      end
-   end
    
      it "searches AddressBook for Bill" do
        book.import_from_csv("entries.csv")
@@ -133,4 +132,14 @@
        entry = book.binary_search("Billy")
        expect(entry).to be_nil
      end
+    end
+    
+    describe "#zombie_apocalypse_entries" do
+     it "deletes all entries in the AddressBook" do
+       book.import_from_csv("entries.csv")
+       empty_book = book.zombie_apocalypse_the_entries
+       expect(empty_book.entries.size).to eq(0)
+     end
+    end
+    
  end
